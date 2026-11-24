@@ -1,0 +1,18 @@
+id = "ivanlutsenko.prompt-nav"
+name = "Prompt Nav"
+version = "0.1.0"
+min_herdr_version = "0.9.3"
+description = "Table of contents of your prompts in a Claude Code or Codex pane; Enter scrolls the pane to the prompt"
+platforms = ["macos", "linux"]
+
+[[panes]]
+id = "prompts"
+title = "Prompts"
+placement = "popup"
+command = ["./prompt-nav.py"]
+
+[[actions]]
+id = "open"
+title = "Prompt list"
+contexts = ["pane"]
+command = ["sh", "open.sh"]

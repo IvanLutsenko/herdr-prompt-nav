@@ -30,6 +30,33 @@ Requires `python3` on `PATH` (stdlib only), macOS or Linux.
 
 Focus an agent pane and press the key. `↑`/`↓` (or `j`/`k`), `PgUp`/`PgDn`, `Home`/`End` to move, `Enter` to jump, `Esc` to close.
 
+The popup opens on the last prompt and lists the first line of each prompt, oldest first:
+
+```text
+ Prompts (8) · ↑↓ select · Enter jump · Esc close
+  1 Add a --dry-run flag to the deploy script
+  2 Why does test_upload fail on CI but pass locally?
+  3 /compact
+  4 Rewrite the retry loop with exponential backoff and a max of 5 attem
+  5 Now add a test for the timeout path
+  6 Run the full suite and fix whatever breaks
+  7 Update the README with the new flag
+  8 Commit it
+```
+
+Pick 4 and press `Enter`: the pane scrolls back until the `❯ Rewrite the retry loop…` row is on screen, and the popup
+closes. Slash commands show up as typed (`/compact`); task notifications, shell-mode output and other records the
+agent injects are left out.
+
+To keep `ctrl+p` for the shell, bind a key nothing else uses:
+
+```toml
+[[keys.command]]
+key = "ctrl+shift+p"
+type = "plugin_action"
+command = "ivanlutsenko.prompt-nav.open"
+```
+
 ## How the jump works
 
 - **Fullscreen TUI** (Claude Code with `"tui": "fullscreen"`, Codex): the agent owns its scrollback, so the plugin sends
